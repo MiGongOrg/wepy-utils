@@ -1,0 +1,15 @@
+{
+  "name": "wepy-utils",
+  "version": "1.0.1",
+  "description": "WePy Utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Ming",
+    "email": "muvoid@foxmail.com",
+    "url": "migong.org"
+  },
+  "license": "ISC"
+}
