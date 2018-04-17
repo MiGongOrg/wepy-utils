@@ -11,5 +11,10 @@
     "email": "muvoid@foxmail.com",
     "url": "migong.org"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MiGongOrg/wepy-utils.git"
+  },
+  "homepage": "https://github.com/MiGongOrg/wepy-utils",
   "license": "ISC"
 }
