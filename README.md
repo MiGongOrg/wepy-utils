@@ -16,7 +16,7 @@ import { UTILS, HTTP, TIPS } from 'wepy-utils'
 
 ## Utils
 
-##### UTILS.now()
+##### `UTILS.now()`
 
 > 获取当前时间戳
 
@@ -25,7 +25,7 @@ let now = UTILS.now()
 console.log(now)
 ```
 
-##### UTILS.random()
+##### `UTILS.random()`
 
 > 返回任意区间随机数
 
@@ -38,7 +38,7 @@ console.log(random)
 
 > `GET` `POST` `PATCH` `PUT` `DELETE`
 
-##### HTTP.get()
+##### `HTTP.get()`
 
 
 > 第1种使用方法是URL不带参数。第2种使用方法是在请求URL后带参数，如：`?id=1&name=ming`
@@ -58,7 +58,7 @@ HTTP.get({
 })
 ```
 
-##### HTTP.post()
+##### `HTTP.post()`
 
 > 可自定义 headers，如需 `Authorization` 等，默认：`'Content-Type': 'application/json'`
 
