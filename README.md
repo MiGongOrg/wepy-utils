@@ -1,6 +1,6 @@
-# WePy Utils
+# 微信小程序 WePy Utils
 
-WePy 工具集整合并封装了常用的小程序 API 和 HTTP Request 持续更新中...
+微信小程序 WePy 工具集整合并封装了常用的小程序 API 和 HTTP Request 持续更新中...
 
 ## 安装
 
