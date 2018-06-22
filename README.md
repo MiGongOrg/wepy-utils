@@ -86,34 +86,35 @@ HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object] }).then((da
 
 ## Tips
 
-##### `TIPS.success()`
+##### `TIPS.toast()`
 
-> 显示消息提示框（自定义标题与隐藏时间）
+> 显示消息提示框（可自定义 wx.showToast 的所有参数，除 success、fail、complete）
 
 ```
-TIPS.success('这是一个标题', 1000)
+TIPS.toast({title: '提示标题'})
+
+// 设置 duration > 0 后，隐藏后可支持回调（duration 默认 1500）
+TIPS.toast({
+  title: '提示标题'
+}).then(() => {
+  console.log('隐藏后回调')
+})
 ```
 
 ##### `TIPS.confirm()`
 
-> 显示模态弹窗（第2个参数为 Promise.resolve 是可选项）
+> 显示模态弹窗（payload 为 Promise.resolve 是可选项），除 showCancel 改为 cancel 外，其它可选参数与 wx.showModal 相同
 
 ```javascript
-TIPS.confirm('文字内容', [1,2,3], '标题内容').then((arr) => {
-  console.log('点击了确定', arr[2]); // 3
+TIPS.confirm({
+  title: '提示标题',
+  content: '提示内容',
+  payload: [1,2,3]
+}).then((arr) => {
+  console.log('点击了确定', arr[2]) // 3
 }).catch(() => {
   console.log('点击了取消')
 })
-```
-
-##### `TIPS.toast()`
-
-> 显示消息提示框（可设置ICON，支持隐藏后回调函数）
-
-```javascript
-TIPS.toast('标题', () => {
-  console.log('隐藏时执行回调')
-}, 'loading')
 ```
 
 ##### `TIPS.go()`
