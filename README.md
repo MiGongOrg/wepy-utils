@@ -44,13 +44,14 @@ console.log(random)
 > 第1种使用方法是URL不带参数。第2种使用方法是在请求URL后带参数，如：`?id=1&name=ming`
 
 - `HTTP.get(url).then((data) => {}).catch((error) => {})`
-- `HTTP.get({url: url, params: [JSON Object] }).then((data) => {}).catch((error) => {})`
+- `HTTP.get({url: url, params: [JSON Object] }, mask: [Boolean]).then((data) => {}).catch((error) => {})`
 
 ```javascript
 let url = 'urlpath'
 HTTP.get({
   url: url,
-  params: {id: 1, name: 'ming'}
+  params: {id: 1, name: 'ming'},
+  mask: true
 }).then((data) => {
   console.log(data)
 }).catch((error) => {
@@ -65,6 +66,7 @@ HTTP.get({
 ```javascript
 HTTP.post({
   url: url, params: {id: 1, name: 'ming' },
+  mask: true,
   headers: {'X-Requested-With': 'XMLHttpRequest'}
 }).then((data) => {
   console.log(data)
@@ -77,12 +79,14 @@ HTTP.post({
 
 ```javascript
 // HTTP PATCH
-HTTP.patch({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
+HTTP.patch({url: url, params: [JSON Object], headers: [JSON Object], mask: [Boolean] }).then((data) => {}).catch((error) => {})
 // HTTP PUT
-HTTP.put({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
+HTTP.put({url: url, params: [JSON Object], headers: [JSON Object], mask: [Boolean] }).then((data) => {}).catch((error) => {})
 // HTTP DELETE
-HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
+HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object], mask: [Boolean] }).then((data) => {}).catch((error) => {})
 ```
+
+> `mask` 是否显示透明蒙层，防止触摸穿透，默认：`false`
 
 ## Tips
 
@@ -90,7 +94,7 @@ HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object] }).then((da
 
 > 显示消息提示框（可自定义 wx.showToast 的所有参数，除 success、fail、complete）
 
-```
+```javascript
 TIPS.toast({title: '提示标题'})
 
 // 设置 duration > 0 后，隐藏后可支持回调（duration 默认 1500）

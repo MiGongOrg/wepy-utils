@@ -1,5 +1,3 @@
-'use strict';
-
 var Http = {
   /**
    * [HTTP GET 请求]
@@ -7,14 +5,14 @@ var Http = {
    * 1. HTTP.get(url).then((data) => {}).catch((error) => {})
    * 2. HTTP.get({url: url, params: [JSON Object] }).then((data) => {}).catch((error) => {})
    */
-  get: function get(requestHandler) {
+  get: function(requestHandler) {
     if (typeof requestHandler === 'string') {
       requestHandler = {
         url: String(requestHandler),
         params: {}
-      };
+      }
     }
-    return this.Request('GET', requestHandler);
+    return this.Request('GET', requestHandler)
   },
 
   /**
@@ -22,47 +20,43 @@ var Http = {
    * @param [可自定义 headers，如需 Authorization 等，默认：'Content-Type': 'application/json']
    * HTTP.post({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
    */
-  post: function post(requestHandler) {
-    return this.Request('POST', requestHandler);
+  post: function(requestHandler) {
+    return this.Request('POST', requestHandler)
   },
 
   /**
    * [HTTP PATCH 请求]
    * HTTP.patch({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
    */
-  patch: function patch(requestHandler) {
-    return this.Request('PATCH', requestHandler);
+  patch: function(requestHandler) {
+    return this.Request('PATCH', requestHandler)
   },
 
   /**
    * [HTTP PUT 请求]
    * HTTP.put({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
    */
-  put: function put(requestHandler) {
-    return this.Request('PUT', requestHandler);
+  put: function(requestHandler) {
+    return this.Request('PUT', requestHandler)
   },
 
   /**
    * [HTTP DELETE 请求]
    * HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object] }).then((data) => {}).catch((error) => {})
    */
-  delete: function _delete(requestHandler) {
-    return this.Request('DELETE', requestHandler);
+  delete: function(requestHandler) {
+    return this.Request('DELETE', requestHandler)
   },
 
   // request
-  Request: function Request(method, requestHandler) {
-    var url = requestHandler.url,
-        params = requestHandler.params,
-        headers = requestHandler.headers,
-        mask = requestHandler.mask;
+  Request: function(method, requestHandler) {
+    const { url, params, headers, mask } = requestHandler
 
+    console.table(requestHandler)
 
-    console.table(requestHandler);
+    wx.showLoading && wx.showLoading({title: 'Loading...', mask: mask ? mask : false})
 
-    wx.showLoading && wx.showLoading({ title: 'Loading...', mask: mask ? mask : false });
-
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       wx.request({
         url: url,
         data: params,
@@ -76,22 +70,20 @@ var Http = {
           'Content-Type': 'application/x-www-form-urlencoded'
           */
         }, headers),
-        success: function success(res) {
-          var data = res.data,
-              statusCode = res.statusCode;
+        success: function (res) {
+          const { data, statusCode } = res
           // 处理数据
-
-          statusCode === 200 ? resolve(data) : reject(data, statusCode);
+          statusCode === 200 ? resolve(data) : reject(data, statusCode)
         },
-        fail: function fail() {
-          reject('Network request failed');
+        fail: function () {
+          reject('Network request failed')
         },
-        complete: function complete() {
-          wx.hideLoading && wx.hideLoading();
+        complete: function () {
+          wx.hideLoading && wx.hideLoading()
         }
-      });
-    });
+      })
+    })
   }
-};
+}
 
 module.exports = Http;
