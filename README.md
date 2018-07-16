@@ -34,6 +34,24 @@ let random = UTILS.random(1, 5)
 console.log(random)
 ```
 
+#### `UTILS.param()`
+
+> 将对象解析成 url 字符串
+
+```javascript
+let obj = {} // 需解析的对象
+let strResult = UTILS.param(obj, true)  // 第二个参数 true | false 表示是否使用unDecodeURI编码，默认 false
+```
+
+#### `UTILS.unparam()`
+
+> 将 url 字符串解析成对象
+
+```javascript
+let url = 'url' // 需解析的对象
+let objResult = UTILS.unparam(url, true)  // 第二个参数 true | false 表示是否使用unDecodeURI解码，默认 false
+```
+
 ## HTTP Request
 
 > `GET` `POST` `PATCH` `PUT` `DELETE`
@@ -194,4 +212,71 @@ TIPS.downloadSaveFiles({
     console.log(err)
   }
 })
+```
+
+#### `TIPS.share()`
+
+> 转发分享
+
+```javascript
+let url = 'url'
+TIPS.share('小程序名称', url)
+```
+
+#### `TIPS.navigateTo()`
+
+> 保留当前页面，跳转到应用内的某个页面
+
+```javascript
+TIPS.navigateTo(url, params)
+```
+
+#### `TIPS.redirectTo()`
+
+> 关闭当前页面，跳转到应用内的某个页面
+
+```javascript
+TIPS.redirectTo(url, params)
+```
+
+#### `TIPS.switchTab()`
+
+> 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+
+```javascript
+TIPS.switchTab(url, params)
+```
+
+#### `TIPS.reLaunch()`
+
+> 关闭所有页面，打开到应用内的某个页面
+
+```javascript
+TIPS.reLaunch(url, params)
+```
+
+#### `TIPS.getLocation()`
+
+> 获取地理位置
+
+```javascript
+TIPS.getLocation({
+    type                   : "wgs84", // [String], 默认 'wgs84', 返回 GPS 坐标
+    success                : function (res) {}, // [Function], 获取地理位置成功后回调
+    fail                   : function () {}, // [Function], 获取地里位置失败后回调
+    complete               : function (res) {}, // [Function], 接口调用结束后回调
+    cancel                 : null, // [Function], 当点击授权提示弹窗"取消"按钮后回调，可不写，默认使用 fail 参数的回调
+    modalAuthorizationTitle: "提示", // [String], 授权提示弹窗标题
+    modalAuthorizationTxt  : "允许获取地理位置信息", // [String], 授权提示弹窗文字内容
+})
+```
+
+#### `TIPS.getLocateInfo()`
+
+> 根据经纬度获取地理位置信息，默认坐标：北京市人民政府
+
+```javascript
+let latitude = 39.90403, longitude = 116.407526
+TIPS.getLocateInfo(latitude, longitude)
+    .then(function(res){}, function(err){})
 ```
