@@ -1,5 +1,9 @@
 # Change log
 
+##### V1.0.7
+
+- 移除 HTTP 模块中的 console.table() 解决安卓兼容问题
+
 ##### V1.0.6
 
 - 使用 Gulp `Babel` 编译 `ES6` 解决 WePy 打包报错问题

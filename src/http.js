@@ -52,8 +52,6 @@ var Http = {
   Request: function(method, requestHandler) {
     const { url, params, headers, mask } = requestHandler
 
-    console.table(requestHandler)
-
     wx.showLoading && wx.showLoading({title: 'Loading...', mask: mask ? mask : false})
 
     return new Promise((resolve, reject) => {
