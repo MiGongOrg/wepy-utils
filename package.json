@@ -1,6 +1,6 @@
 {
   "name": "wepy-utils",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "WePy Utils",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
     "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1"
+    "gulp-babel": "^7.0.1",
+    "gulp-uglify": "^3.0.1"
   },
   "dependencies": {}
 }

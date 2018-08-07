@@ -16,7 +16,7 @@ var Utils = {
       max = min;
       min = 0;
     }
-    return min + Math.floor(Math.random() * (max - min + 1));
+    return min + Math.floor(Math.random() * (max - min + 1))
   },
 
   /**
@@ -26,19 +26,19 @@ var Utils = {
    * @return {String} 转换之后的url参数
    */
 
-  param: function(obj = {}, unEncodeURI) {
-    let result = [];
+  param (obj = {}, unEncodeURI) {
+    let result = []
 
     for (let name of Object.keys(obj)) {
       let value = obj[name];
 
-      result.push(name + '=' + (unEncodeURI ? value : encodeURIComponent(value)));
+      result.push(name + '=' + (unEncodeURI ? value : encodeURIComponent(value)))
     }
 
     if (result.length) {
-      return '?' + result.join('&');
+      return '?' + result.join('&')
     } else {
-      return '';
+      return ''
     }
   },
 
@@ -49,26 +49,26 @@ var Utils = {
    * @return {Object} 转换之后的url参数
    */
 
-  unparam: function(str = '', unDecodeURI) {
-    let result = {};
-    let query = str.split('?')[1];
+  unparam (str = '', unDecodeURI) {
+    let result = {}
+      , query = str.split('?')[1]
 
-    if (!query) return result;
+    if (!query) return result
 
-    let arr = query.split('&');
+    let arr = query.split('&')
 
     arr.forEach((item, idx) => {
-      let param = item.split('=');
-      let name = param[0];
-      let value = param[1] || '';
+      let param = item.split('=')
+        , name = param[0]
+        , value = param[1] || ''
 
       if (name) {
-        result[name] = unDecodeURI ? value : decodeURIComponent(value);
+        result[name] = unDecodeURI ? value : decodeURIComponent(value)
       }
-    });
+    })
 
-    return result;
+    return result
   }
 }
 
-module.exports = Utils;
+module.exports = Utils
