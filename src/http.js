@@ -50,9 +50,11 @@ var Http = {
 
   // request
   Request: function(method, requestHandler) {
-    const { url, params, headers, mask } = requestHandler
+    const { url, params, headers, mask, loading } = requestHandler
 
-    wx.showLoading && wx.showLoading({title: 'Loading...', mask: mask ? mask : false})
+    if (loading === undefined || loading) {
+      wx.showLoading && wx.showLoading({title: 'Loading...', mask: mask ? mask : false})
+    }
 
     return new Promise((resolve, reject) => {
       wx.request({

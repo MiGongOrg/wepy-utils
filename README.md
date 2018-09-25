@@ -87,6 +87,7 @@ HTTP.get({
 HTTP.post({
   url: url, params: {id: 1, name: 'ming' },
   mask: true,
+  loading: false,
   headers: {'X-Requested-With': 'XMLHttpRequest'}
 }).then((data) => {
   console.log(data)
@@ -106,7 +107,9 @@ HTTP.put({url: url, params: [JSON Object], headers: [JSON Object], mask: [Boolea
 HTTP.delete({url: url, params: [JSON Object], headers: [JSON Object], mask: [Boolean] }).then((data) => {}).catch((error) => {})
 ```
 
-> `mask` 是否显示透明蒙层，防止触摸穿透，默认：`false`
+> `mask` 是否显示透明蒙层，防止触摸穿透，默认：`false`。`loading` 在网络请求加过程中是否显示 `wx.showLoading` 加载动画，默认显示。
+
+⚠️ `onPullDownRefresh` 监听下拉动作与 `wx.showLoading` 一起使用会出现顶部回弹 BUG。所以在使用 `onPullDownRefresh` 时可以将 `loading` 设置为 `false`
 
 ## Tips
 

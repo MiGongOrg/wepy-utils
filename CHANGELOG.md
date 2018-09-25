@@ -1,5 +1,10 @@
 # Change log
 
+##### V1.0.9
+
+- HTTP Request 新增 `loading` 可选参数，默认为 `true` 即显示加载动画。
+> 因 `onPullDownRefresh` 监听下拉动作与 `wx.showLoading` 一起使用会出现顶部回弹 BUG。所以在使用 `onPullDownRefresh` 时可将 `loading` 设置为 `false`
+
 ##### V1.0.8
 
 - 移除 `TIPS.go()` 改用 `TIPS.navigateTo()`
